@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>iOS网络请求类的简单封装 | 四公子的剑</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言： 这篇文章主要讲解一下使用AFNetWorking(以下简称AFN)来自定义一个完整的网络请求类，来进行常用的网络请求后台数据的功能。 网上这样的例子很多，但是本文是基于AFNnetWorking的3.0以上版本的进行讲解的，同时也为支持ipv6协议（其实NSURLConnection也是支持ipv6的，博主模拟了ipv6运行环境，基于Connection的网络请求是没有任何问题的，也就是说">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS网络请求类的简单封装">
+<meta property="og:url" content="http://blogbo.org/2016/12/05/iOS%20Internet%20Requst%20For%20Example/index.html">
+<meta property="og:site_name" content="四公子的剑">
+<meta property="og:description" content="前言： 这篇文章主要讲解一下使用AFNetWorking(以下简称AFN)来自定义一个完整的网络请求类，来进行常用的网络请求后台数据的功能。 网上这样的例子很多，但是本文是基于AFNnetWorking的3.0以上版本的进行讲解的，同时也为支持ipv6协议（其实NSURLConnection也是支持ipv6的，博主模拟了ipv6运行环境，基于Connection的网络请求是没有任何问题的，也就是说">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-12-05T02:51:51.000Z">
+<meta property="article:modified_time" content="2021-04-12T11:20:52.067Z">
+<meta property="article:author" content="bobo">
+<meta property="article:tag" content="iOS">
+<meta property="article:tag" content="OC">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="四公子的剑" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">四公子的剑</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blogbo.org"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-iOS Internet Requst For Example" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/05/iOS%20Internet%20Requst%20For%20Example/" class="article-date">
+  <time datetime="2016-12-05T02:51:51.000Z" itemprop="datePublished">2016-12-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iOS网络请求类的简单封装
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前言：</p>
+<p>这篇文章主要讲解一下使用AFNetWorking(以下简称AFN)来自定义一个完整的网络请求类，来进行常用的网络请求后台数据的功能。 网上这样的例子很多，但是本文是基于AFNnetWorking的3.0以上版本的进行讲解的，同时也为支持ipv6协议（其实NSURLConnection也是支持ipv6的，博主模拟了ipv6运行环境，基于Connection的网络请求是没有任何问题的，也就是说AFN2.x以上，应该都没问题，这边提供一下 唐巧 的微信公众号放出来的文章：iOS应用支持 IPv6，就那点事儿），主要是针对NSURLConnection到NSURLSession的转变封装，至于网络请求的基类Session原理，后续文章会详细讲解。</p>
+<p>下面直接看代码：</p>
+<p>首先你的项目中应当已有AFN的第三方库的存在，可以使用pods来进行安装，至于还不会使用pods来管理第三方开源库的同学，请去自行谷歌，pods不在本篇的讨论范围之内。CocoaPods官网</p>
+<p>首先我们新建一个继承自NSObject的自定义类，import引入AFN的头文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import &lt;Foundation&#x2F;Foundation.h&gt;</span><br><span class="line">import &quot;AFNetworking.h</span><br><span class="line">@interface HGHttpRequestManager : NSObject</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>实例化session网络请求管理者：<br>@property (nonatomic,strong)AFHTTPSessionManager *httpRequestManager;</p>
+<p>设置这个类的单例方法，以便在实例化类的时候使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;BaseUrl，固定接口形式;yyy处填写不同模块需要拼接的请求短路径</span><br><span class="line">const static NSString *BaseUrl &#x3D; @&quot;http:&#x2F;&#x2F;xxx.com&#x2F;yyy&quot;;</span><br><span class="line"></span><br><span class="line">static HGHttpRequestManager *manager &#x3D; nil;</span><br><span class="line"></span><br><span class="line">@implementation HGHttpRequestManager</span><br><span class="line">&#x2F;&#x2F;生成类对象单例，这都是知道的了（不知道留评论，我手把手教你，哈哈）</span><br><span class="line">+ (HGHttpRequestManager *)sharedManager &#123;</span><br><span class="line">    static dispatch_once_t onceToken;</span><br><span class="line">    dispatch_once(&amp;onceToken, ^&#123;</span><br><span class="line">        if (!manager) &#123;</span><br><span class="line">            manager &#x3D; [[super alloc] init];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    return manager;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在封装请求方法之前，这里先定义一个方法，用来拼接每次发起请求所需要的参数集合，返回一个Dictionary，这个字典的可变参数是可配置的，每次请求都有必传参数，首先在这个集合中定义完成，包括：签名、系统版本os、userToken、version、deviceID；这些都是每次请求必传参数列表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;这个方法是封装一些基础参数，或者说每次请求API接口必传的参数，可根据自己的业务逻辑进行合理的封装</span><br><span class="line">- (NSDictionary *)formatParameters:(NSMutableDictionary *)parameters&#123;</span><br><span class="line">    NSMutableDictionary *dictAllParams &#x3D; [NSMutableDictionary dictionaryWithCapacity:0];</span><br><span class="line">    &#x2F;&#x2F;设置传入参数</span><br><span class="line">    if (parameters) &#123;</span><br><span class="line">        [dictAllParams addEntriesFromDictionary:parameters];</span><br><span class="line">    &#125;</span><br><span class="line">    [dictAllParams addEntriesFromDictionary:[self commonParameters]];</span><br><span class="line">    &#x2F;&#x2F;设置token</span><br><span class="line">    if ([HGUserData sharedInstance].userToken) &#123;</span><br><span class="line">        [dictAllParams setValue:[HGUserData sharedInstance].userToken forKey:kUDKey_UserToken];</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F; 排序升序，签名value</span><br><span class="line">    NSString *strSigned &#x3D; [[HGSecurityManager sharedInstance] signParameters:dictAllParams withKey:HGX_KEY];</span><br><span class="line">    [dictAllParams setValue:strSigned forKey:@&quot;sign&quot;];</span><br><span class="line">    return dictAllParams.copy;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;生成字典，把结果return给上面的方法，以供GET或POST请求时获取</span><br><span class="line">- (NSDictionary *)commonParameters&#123;</span><br><span class="line">    NSMutableDictionary *dict &#x3D; [[NSMutableDictionary alloc]init];</span><br><span class="line">    [dict safeSetValue:API_VER forKey:@&quot;version&quot;];</span><br><span class="line">    [dict safeSetValue:[OpenUDID value] forKey:@&quot;deviceId&quot;];</span><br><span class="line">    [dict safeSetValue:@&quot;2&quot; forKey:@&quot;os&quot;];</span><br><span class="line">    return dict.copy;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>封装GET方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">- (void)getRequestWithPamameters:(NSMutableDictionary *)parameters</span><br><span class="line">                          ToPath:(NSString *)path</span><br><span class="line">                         success:(void (^)(NSDictionary *result))success</span><br><span class="line">                         failure:(void (^)(NSError *error))failure</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F;拼接参数</span><br><span class="line">    NSDictionary *dictAllParams &#x3D; [self formatParameters:parameters];</span><br><span class="line">    &#x2F;&#x2F;请求路径</span><br><span class="line">    NSString *strUrl &#x3D;  [NSString stringWithFormat:@&quot;%@%@&quot;,BaseUrl,path];</span><br><span class="line">    AFHTTPSessionManager *sessionManager &#x3D; [AFHTTPSessionManager manager];</span><br><span class="line">    &#x2F;&#x2F;设定可以接收的返回类型</span><br><span class="line">    sessionManager.responseSerializer.acceptableContentTypes &#x3D; [NSSet setWithObjects:@&quot;application&#x2F;json&quot;, @&quot;text&#x2F;html&quot;,@&quot;text&#x2F;json&quot;,@&quot;text&#x2F;javascript&quot;, nil];</span><br><span class="line">    </span><br><span class="line">    [sessionManager GET:strUrl parameters:dictAllParams progress:^(NSProgress * _Nonnull downloadProgress) &#123;</span><br><span class="line">    &#125; success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) &#123;</span><br><span class="line">    &#x2F;&#x2F;成功或失败，用之前定义好的block把状态给回调出来</span><br><span class="line">        if (success) &#123;</span><br><span class="line">            HGBaseModel *baseModel &#x3D; [[HGBaseModel alloc]initWithDictionary:responseObject error:nil];</span><br><span class="line">            &#x2F;&#x2F;这里是一个code状态码，自己和后台约束设定的，code为99则表示用户还未登录，直接跳转到登录页面</span><br><span class="line">            if (baseModel.code &#x3D;&#x3D; 99) &#123;</span><br><span class="line">                [[HGUserData sharedInstance] setIsLogin:@NO];</span><br><span class="line">                [self gotoLogin];</span><br><span class="line">            &#125;</span><br><span class="line">            success(responseObject);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) &#123;</span><br><span class="line">        if (failure) &#123;</span><br><span class="line">            failure(error);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>封装POST方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;参数列表使用封装的基本参数之后，会自动放到body之内</span><br><span class="line">- (void)postRequestWithPamameters:(NSMutableDictionary *)parameters</span><br><span class="line">                           ToPath:(NSString *)path</span><br><span class="line">                          success:(void (^)(NSDictionary *result))success</span><br><span class="line">                          failure:(void (^)(NSError *error))failure &#123;</span><br><span class="line">    &#x2F;&#x2F;拼接参数</span><br><span class="line">    NSDictionary *dictAllParams &#x3D; [self formatParameters:parameters];</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;请求路径</span><br><span class="line">    NSString *strUrl &#x3D;  [NSString stringWithFormat:@&quot;%@%@&quot;,BaseUrl,path];</span><br><span class="line"></span><br><span class="line">    AFHTTPSessionManager *sessionManager &#x3D; [AFHTTPSessionManager manager];</span><br><span class="line">    [sessionManager POST:strUrl parameters:dictAllParams progress:^(NSProgress * _Nonnull uploadProgress) &#123;</span><br><span class="line"></span><br><span class="line">    &#125; success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) &#123;</span><br><span class="line">        [self printSucceededResponseObject:responseObject withReqestUrl:strUrl andParams:dictAllParams];</span><br><span class="line">        if (success) &#123;</span><br><span class="line">            success(responseObject);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) &#123;</span><br><span class="line">        [self printError:error withReqestUrl:strUrl andParams:dictAllParams];</span><br><span class="line">        if (failure) &#123;</span><br><span class="line">            failure(error);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>我们来看一下具体的使用方法，请求一个接口，返回一串json数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;首先，直接生成单例对象，调用封装好的GET方法：</span><br><span class="line">&#x2F;&#x2F;这里在请求时，加载一下loading转圈提示，提示用户在进行网络请求</span><br><span class="line">[self showLoading];</span><br><span class="line">[[HGHttpRequestManager sharedManager] getRequestWithPamameters:dictParams ToPath:kAPIPathOrderCancel success:^(NSDictionary *result) &#123;</span><br><span class="line">         &#x2F;&#x2F;请求完成后，隐藏loading</span><br><span class="line">        [self hideLoading];</span><br><span class="line">        &#x2F;&#x2F;model中封装的一个init方法，直接把请求结果result的dictionary格式数据转化成model存储</span><br><span class="line">        OrderListModel *orderListModel &#x3D; [[OrderListModel alloc]initWithDictionary:result error:nil];</span><br><span class="line">        if (orderListModel.isValid) &#123;</span><br><span class="line"></span><br><span class="line">            [self showSucceededHud:orderListModel.msg];</span><br><span class="line">&#x2F;&#x2F;此时model有值，把model中的数组数据放到全局数组之中，这个数组就是数据源，然后调用自定义的一些方法，我这里是刷新订单列表OrderList</span><br><span class="line">          [self.mArrayOrderList addObjectsFromArray:orderListModel.data];</span><br><span class="line">          [self getOrderList];</span><br><span class="line">          [self.listTableView reloadData];</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            [self showErrorHud:orderListModel.msg];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; failure:^(NSError *error) &#123;</span><br><span class="line">    &#x2F;&#x2F;请求失败也要隐藏loading</span><br><span class="line">        [self hideLoading];</span><br><span class="line">    &#125;];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>这样一套完整的网络请求流程就完成了</p>
+<p>这里有几点要说明下：<br>1、这里AFNetWorking使用的是3.1.0版本，3.0以下版本不适用于本文(如果需要，可以去看下源码，里面的请求类是RequestOperationManager)</p>
+<p>2、Model封装方法就不展示了，model是基于JSONModel框架的，有兴趣的同学可以看下怎样继承，然后进行model解析</p>
+<p>3、这里面的主要的一点是封装每次必传的请求参数，这是有些同学经常请求API写的很乱的一个原因所在。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blogbo.org/2016/12/05/iOS%20Internet%20Requst%20For%20Example/" data-id="cknek1i7t000fdzrdfb3y8dvb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OC/" rel="tag">OC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/05/A%20simple%20python%20demo/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          一个简单的python小脚本
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/OC/" rel="tag">OC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xcode/" rel="tag">Xcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E6%80%A7/" rel="tag">人性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/OC/" style="font-size: 10px;">OC</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/%E4%BA%BA%E6%80%A7/" style="font-size: 10px;">人性</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 20px;">随笔</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/26/%E6%88%91%E6%9C%89%E4%B8%89%E6%8A%8A%E5%88%80/">我有三把刀</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/08/fastlane%20integrated/">Fastlane自动上传beta包遇到的一些坑</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/21/%E6%9C%80%E8%BF%91%E7%8A%B6%E6%80%81%E6%84%9F%E6%83%B3/">Lorem ipsum</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/20/KBPhotoSelector/">KBPhotoSelector，一款iOS照片集选择、浏览、删除开源库</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/02/17%E5%B9%B45%E6%9C%882%E5%8F%B7%E9%9A%8F%E7%AC%94/">人，生来疾苦</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 bobo<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  </div>
+</body>
+</html>

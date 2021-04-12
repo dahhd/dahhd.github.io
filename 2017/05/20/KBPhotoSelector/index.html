@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>KBPhotoSelector，一款iOS照片集选择、浏览、删除开源库 | 四公子的剑</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="由于公司项目的一个新模块需要做一些社交之类的需求，类似于简单的朋友圈，可以支持用户发表纯文字内容、带有照片的配文。这时需要从系统相册中选择所需要的图片进行发表，开始这个需求之前网上找过一些轮子，但是都不太满意，功能不完善、细节处理的不够，包括只有选择照片，不支持多选，无最大照片选择数的根据需求自定义，选择之后不能进行删除、没有对其压缩等等。所以就有了下面这款新的轮子了，虽然某种意义上也是重复造轮子">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KBPhotoSelector，一款iOS照片集选择、浏览、删除开源库">
+<meta property="og:url" content="http://blogbo.org/2017/05/20/KBPhotoSelector/index.html">
+<meta property="og:site_name" content="四公子的剑">
+<meta property="og:description" content="由于公司项目的一个新模块需要做一些社交之类的需求，类似于简单的朋友圈，可以支持用户发表纯文字内容、带有照片的配文。这时需要从系统相册中选择所需要的图片进行发表，开始这个需求之前网上找过一些轮子，但是都不太满意，功能不完善、细节处理的不够，包括只有选择照片，不支持多选，无最大照片选择数的根据需求自定义，选择之后不能进行删除、没有对其压缩等等。所以就有了下面这款新的轮子了，虽然某种意义上也是重复造轮子">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-05-20T07:10:10.000Z">
+<meta property="article:modified_time" content="2021-04-12T11:20:52.066Z">
+<meta property="article:author" content="bobo">
+<meta property="article:tag" content="iOS">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="四公子的剑" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">四公子的剑</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blogbo.org"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-KBPhotoSelector" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/20/KBPhotoSelector/" class="article-date">
+  <time datetime="2017-05-20T07:10:10.000Z" itemprop="datePublished">2017-05-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      KBPhotoSelector，一款iOS照片集选择、浏览、删除开源库
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>由于公司项目的一个新模块需要做一些社交之类的需求，类似于简单的朋友圈，可以支持用户发表纯文字内容、带有照片的配文。这时需要从系统相册中选择所需要的图片进行发表，开始这个需求之前网上找过一些轮子，但是都不太满意，功能不完善、细节处理的不够，包括只有选择照片，不支持多选，无最大照片选择数的根据需求自定义，选择之后不能进行删除、没有对其压缩等等。所以就有了下面这款新的轮子了，虽然某种意义上也是重复造轮子了，但为了更方便、用起来更舒心，我想还是有必要的，有需要的朋友可以尝试在您的项目中引用，你需要写的可能不超过三行代码。</p>
+<h2 id="KBPhotoSelector"><a href="#KBPhotoSelector" class="headerlink" title="KBPhotoSelector"></a>KBPhotoSelector</h2><h4 id="简单介绍一下这款工具的优势："><a href="#简单介绍一下这款工具的优势：" class="headerlink" title="简单介绍一下这款工具的优势："></a>简单介绍一下这款工具的优势：</h4><ul>
+<li>支持照片多选，真正意义上的多选，可根据需求自定义选择数量</li>
+<li>支持大图预览，预览的过程中可进行筛选</li>
+<li>支持文件夹列表分类，便于进行分类选择，基于苹果iOS8推出的PhotoKit框架，以后可能会增加新特性</li>
+<li>支持删除提供了专门删除的页面，这需要基于开发者自己模块具体操作，框架本身我已提供索引</li>
+<li>支持回到分类页面，进行重新选择照片分类时，记录之前的所有选择，不会再需要重新手动选择一遍（目前这点我看了微信的照片选择器，并没有这么智能）</li>
+</ul>
+<h4 id="项目地址："><a href="#项目地址：" class="headerlink" title="项目地址："></a>项目地址：</h4><p><a target="_blank" rel="noopener" href="https://github.com/Bofearless/KBPhotoSelector.git">https://github.com/Bofearless/KBPhotoSelector.git</a></p>
+<h4 id="示例介绍具体用法："><a href="#示例介绍具体用法：" class="headerlink" title="示例介绍具体用法："></a>示例介绍具体用法：</h4><p>框架已发布到cocoapods上，cocoapods是iOS上一款非常流行且强大的开源库管理工具，如果有不了解的同学，可以先去了解下，应该能极大的提高你的开发效率。这里友情链接一篇对cocoapods介绍较全面的<a target="_blank" rel="noopener" href="http://blog.devtang.com/2014/05/25/use-cocoapod-to-manage-ios-lib-dependency/">文章</a>，以供了解。</p>
+<p><strong>两种安装方式(推荐使用pods)：</strong><br>1、podfile文件： pod ‘KBPhotoSelector’<br>2、github下载后解压，拖入项目合适位置</p>
+<br/>
+
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#<span class="keyword">import</span> &lt;KBPhotoSelector/KBPhotoSelector.h&gt;</span><br><span class="line">#<span class="keyword">import</span> &lt;KBPhotoSelector/KBBasePopView1.h&gt;  <span class="comment">//这个是弹起底部选择框的customView</span></span><br><span class="line"></span><br><span class="line">    <span class="type">KBPhotoSelector</span> <span class="operator">*</span>photoSelector <span class="operator">=</span> [[<span class="type">KBPhotoSelector</span> alloc]<span class="keyword">init</span>];</span><br><span class="line">    photoSelector.maxSelectCount <span class="operator">=</span> count; <span class="comment">//这里count就是你所想要支持选择照片的最多数量</span></span><br><span class="line">    <span class="type">KBBasePopView1</span> <span class="operator">*</span>baseView <span class="operator">=</span> [<span class="type">KBBasePopView1</span> popupWithView:photoSelector];</span><br><span class="line">    [photoSelector showPreviewPhotoWithSender:<span class="keyword">self</span> animate:<span class="type">YES</span> lastSelectPhotoModels:<span class="literal">nil</span> completion:<span class="operator">^</span>(<span class="type">NSArray</span>&lt;<span class="type">UIImage</span> *&gt; <span class="operator">*</span> _Nonnull selectPhotos, <span class="type">NSArray</span>&lt;<span class="type">KBSelectPhotoModel</span> *&gt; <span class="operator">*</span> _Nonnull selectPhotoModels) &#123;</span><br><span class="line">        [baseView hide];</span><br><span class="line"></span><br><span class="line">           <span class="comment">//这里提供了两个回调数组，第一个就是你所选择的照片数组，拿到数据后进行显示加载等后续操作就好；</span></span><br><span class="line">           <span class="comment">//第二个数组是PhotoKit对应的PHAsset类型封装的Model模型，有需要的同学也可用作其他操作。</span></span><br><span class="line">        <span class="type">NSLog</span>(@<span class="string">&quot;selectPhotos is %@&quot;</span>,selectPhotos);</span><br><span class="line">    &#125;];</span><br><span class="line"></span><br><span class="line">    <span class="comment">//取消按钮，hide弹起的popupView</span></span><br><span class="line">    [photoSelector setCanceBlock:<span class="operator">^</span>&#123;</span><br><span class="line">        [baseView hide];</span><br><span class="line">    &#125;];</span><br><span class="line">    [baseView show];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//框架中，我其实还提供了选择完成后，在你所呈现的浏览页面上，点击每个itme，进行浏览、删除等操作</span></span><br><span class="line"><span class="comment">//具体的类是：KBPhotoBrowserDeleteController</span></span><br><span class="line"></span><br><span class="line">#<span class="keyword">import</span> &lt;KBPhotoSelector/KBPhotoBrowserDeleteController.h&gt;</span><br><span class="line"><span class="comment">//点击某张照片时，需要传的参数：当前所有找照片数组；当前被点击item(照片)的索引</span></span><br><span class="line">    <span class="keyword">self</span>.postsView.didSelectedItemBlock <span class="operator">=</span> <span class="operator">^</span>(<span class="type">NSMutableArray</span> <span class="operator">*</span>arr, <span class="type">NSInteger</span> index) &#123;</span><br><span class="line">        <span class="type">KBPhotoBrowserDeleteController</span> <span class="operator">*</span>nextVc <span class="operator">=</span> [[<span class="type">KBPhotoBrowserDeleteController</span> alloc]<span class="keyword">init</span>];</span><br><span class="line">        nextVc.currentSelectedImgeArr <span class="operator">=</span> arr;</span><br><span class="line">        nextVc.currentIndex <span class="operator">=</span> index;</span><br><span class="line"></span><br><span class="line"><span class="comment">//删除后回调</span></span><br><span class="line">        [nextVc setCompeletionDeleteBlock:<span class="operator">^</span>(<span class="type">NSMutableArray</span>&lt;<span class="type">UIImage</span> *&gt; <span class="operator">*</span>callBackArr) &#123;</span><br><span class="line">            [weakSelf.postsView setUpdateDataSource:callBackArr];</span><br><span class="line">        &#125;];</span><br><span class="line">        [weakSelf.navigationController pushViewController:nextVc animated:<span class="type">YES</span>];</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>好了，以上就是基本的使用示例了，集成起来很简单，实现几个暴露的API方法就能满足你的所有需求。上面是代码的示范，之后我会提供一下具体的截图样例，上传以供参考。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blogbo.org/2017/05/20/KBPhotoSelector/" data-id="cknek1i7p000adzrd4eaw8s8b" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/11/21/%E6%9C%80%E8%BF%91%E7%8A%B6%E6%80%81%E6%84%9F%E6%83%B3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Lorem ipsum
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/02/17%E5%B9%B45%E6%9C%882%E5%8F%B7%E9%9A%8F%E7%AC%94/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">人，生来疾苦</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/OC/" rel="tag">OC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xcode/" rel="tag">Xcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E6%80%A7/" rel="tag">人性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/OC/" style="font-size: 10px;">OC</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/%E4%BA%BA%E6%80%A7/" style="font-size: 10px;">人性</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 20px;">随笔</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/26/%E6%88%91%E6%9C%89%E4%B8%89%E6%8A%8A%E5%88%80/">我有三把刀</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/08/fastlane%20integrated/">Fastlane自动上传beta包遇到的一些坑</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/21/%E6%9C%80%E8%BF%91%E7%8A%B6%E6%80%81%E6%84%9F%E6%83%B3/">Lorem ipsum</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/20/KBPhotoSelector/">KBPhotoSelector，一款iOS照片集选择、浏览、删除开源库</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/02/17%E5%B9%B45%E6%9C%882%E5%8F%B7%E9%9A%8F%E7%AC%94/">人，生来疾苦</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 bobo<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  </div>
+</body>
+</html>
