@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>四公子的剑</title>
+  
+  <subtitle>This is my site, welcome you!</subtitle>
+  <link href="https://www.965.one/atom.xml" rel="self"/>
+  
+  <link href="https://www.965.one/"/>
+  <updated>2021-07-11T07:48:15.818Z</updated>
+  <id>https://www.965.one/</id>
+  
+  <author>
+    <name>bobo</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>WWDC21上海场技术沙龙参与记录</title>
+    <link href="https://www.965.one/2021/07/10/WWDC21-ShangHai/"/>
+    <id>https://www.965.one/2021/07/10/WWDC21-ShangHai/</id>
+    <published>2021-07-10T13:21:19.000Z</published>
+    <updated>2021-07-11T07:48:15.818Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="iOS" scheme="https://www.965.one/tags/iOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Resume</title>
+    <link href="https://www.965.one/2021/06/29/resume/"/>
+    <id>https://www.965.one/2021/06/29/resume/</id>
+    <published>2021-06-29T14:05:56.917Z</published>
+    <updated>2021-07-30T13:47:10.631Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://www.965.one/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+    <category term="iOS" scheme="https://www.965.one/tags/iOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2021丽江5日游</title>
+    <link href="https://www.965.one/2021/04/12/2021%E4%B8%BD%E6%B1%9F5%E6%97%A5%E6%B8%B8/"/>
+    <id>https://www.965.one/2021/04/12/2021%E4%B8%BD%E6%B1%9F5%E6%97%A5%E6%B8%B8/</id>
+    <published>2021-04-11T16:00:00.000Z</published>
+    <updated>2021-04-15T16:40:24.137Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;多图预警，保持流量充足。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://imgtu.com/i/cRPFBQ&quot;&gt;&lt;img src=&quot;https://z3.ax1x.com/2021/04/15/cRPFBQ.jpg&quot;&gt;&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="随笔" scheme="https://www.965.one/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="随笔" scheme="https://www.965.one/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2020年终总结</title>
+    <link href="https://www.965.one/2020/12/31/2020%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
+    <id>https://www.965.one/2020/12/31/2020%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</id>
+    <published>2020-12-31T02:32:45.000Z</published>
+    <updated>2021-05-28T02:38:12.687Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="随笔" scheme="https://www.965.one/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我有三把刀</title>
+    <link href="https://www.965.one/2019/02/26/%E6%88%91%E6%9C%89%E4%B8%89%E6%8A%8A%E5%88%80/"/>
+    <id>https://www.965.one/2019/02/26/%E6%88%91%E6%9C%89%E4%B8%89%E6%8A%8A%E5%88%80/</id>
+    <published>2019-02-26T02:32:00.000Z</published>
+    <updated>2021-04-12T11:20:52.067Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="随笔" scheme="https://www.965.one/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="随笔" scheme="https://www.965.one/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Fastlane自动上传beta包遇到的一些坑</title>
+    <link href="https://www.965.one/2018/07/08/fastlane%20integrated/"/>
+    <id>https://www.965.one/2018/07/08/fastlane%20integrated/</id>
+    <published>2018-07-07T16:00:00.000Z</published>
+    <updated>2021-04-14T06:58:52.969Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;之前都是在Xcode里手动打包，虽然方便但是有些繁琐，而且还不能起身去喝杯咖啡，吹个牛，哈哈哈。本来是直接想让测试和后端对接下，搭建一套 jikens 持续集成环境，怎奈，后端环境一直没搞好，就搁置了。没办法，那只能客户端自己来搞了，毕竟能自动化点是点（摊手）~&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="编程" scheme="https://www.965.one/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+    <category term="iOS" scheme="https://www.965.one/tags/iOS/"/>
+    
+    <category term="Xcode" scheme="https://www.965.one/tags/Xcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Lorem ipsum</title>
+    <link href="https://www.965.one/2017/11/21/%E6%9C%80%E8%BF%91%E7%8A%B6%E6%80%81%E6%84%9F%E6%83%B3/"/>
+    <id>https://www.965.one/2017/11/21/%E6%9C%80%E8%BF%91%E7%8A%B6%E6%80%81%E6%84%9F%E6%83%B3/</id>
+    <published>2017-11-20T16:00:00.000Z</published>
+    <updated>2021-04-12T11:20:52.067Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/e/e6/Paris_Night.jpg&quot; alt=&quot;Paris Night&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="随笔" scheme="https://www.965.one/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="随笔" scheme="https://www.965.one/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>KBPhotoSelector，一款iOS照片集选择、浏览、删除开源库</title>
+    <link href="https://www.965.one/2017/05/20/KBPhotoSelector/"/>
+    <id>https://www.965.one/2017/05/20/KBPhotoSelector/</id>
+    <published>2017-05-20T07:10:10.000Z</published>
+    <updated>2021-04-12T11:20:52.066Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://www.965.one/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+    <category term="iOS" scheme="https://www.965.one/tags/iOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>人，生来疾苦</title>
+    <link href="https://www.965.one/2017/05/02/17%E5%B9%B45%E6%9C%882%E5%8F%B7%E9%9A%8F%E7%AC%94/"/>
+    <id>https://www.965.one/2017/05/02/17%E5%B9%B45%E6%9C%882%E5%8F%B7%E9%9A%8F%E7%AC%94/</id>
+    <published>2017-05-02T14:35:00.000Z</published>
+    <updated>2021-04-12T11:20:52.066Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="随笔" scheme="https://www.965.one/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="人性" scheme="https://www.965.one/tags/%E4%BA%BA%E6%80%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>春风十里不如你，最好的美酒来敬你</title>
+    <link href="https://www.965.one/2017/05/01/17%E5%B9%B45%E6%9C%881%E5%8F%B7%E9%9A%8F%E7%AC%94/"/>
+    <id>https://www.965.one/2017/05/01/17%E5%B9%B45%E6%9C%881%E5%8F%B7%E9%9A%8F%E7%AC%94/</id>
+    <published>2017-05-01T02:51:51.000Z</published>
+    <updated>2021-04-12T11:20:52.066Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;五一假期结束了，没有太多的愉悦，没有太多的风景，只有无尽的想念。&lt;br&gt;敬你一杯可好?&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="随笔" scheme="https://www.965.one/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="随笔" scheme="https://www.965.one/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>网站持续吃灰中...</title>
+    <link href="https://www.965.one/2017/01/01/Can&#39;t%20waste%20siteTime%20and%20money%20/"/>
+    <id>https://www.965.one/2017/01/01/Can&#39;t%20waste%20siteTime%20and%20money%20/</id>
+    <published>2016-12-31T17:06:00.000Z</published>
+    <updated>2021-04-12T11:20:52.066Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="随笔" scheme="https://www.965.one/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>一个简单的python小脚本</title>
+    <link href="https://www.965.one/2016/12/05/A%20simple%20python%20demo/"/>
+    <id>https://www.965.one/2016/12/05/A%20simple%20python%20demo/</id>
+    <published>2016-12-05T02:51:51.000Z</published>
+    <updated>2021-04-12T11:20:52.066Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://www.965.one/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+    <category term="Python" scheme="https://www.965.one/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS网络请求类的简单封装</title>
+    <link href="https://www.965.one/2016/12/05/iOS%20Internet%20Requst%20For%20Example/"/>
+    <id>https://www.965.one/2016/12/05/iOS%20Internet%20Requst%20For%20Example/</id>
+    <published>2016-12-05T02:51:51.000Z</published>
+    <updated>2021-04-12T11:20:52.067Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://www.965.one/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+    <category term="iOS" scheme="https://www.965.one/tags/iOS/"/>
+    
+    <category term="OC" scheme="https://www.965.one/tags/OC/"/>
+    
+  </entry>
+  
+</feed>
