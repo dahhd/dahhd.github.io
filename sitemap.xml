@@ -58,13 +58,6 @@
   </url>
   
   <url>
-    <loc>https://www.965.one/2016/12/05/A%20simple%20python%20demo/</loc>
-    
-    <lastmod>2021-04-12</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.965.one/2017/05/02/17%E5%B9%B45%E6%9C%882%E5%8F%B7%E9%9A%8F%E7%AC%94/</loc>
     
     <lastmod>2021-04-12</lastmod>
@@ -72,14 +65,21 @@
   </url>
   
   <url>
-    <loc>https://www.965.one/2017/01/01/Can't%20waste%20siteTime%20and%20money%20/</loc>
+    <loc>https://www.965.one/2017/05/20/KBPhotoSelector/</loc>
     
     <lastmod>2021-04-12</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.965.one/2017/05/20/KBPhotoSelector/</loc>
+    <loc>https://www.965.one/2016/12/05/A%20simple%20python%20demo/</loc>
+    
+    <lastmod>2021-04-12</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.965.one/2017/01/01/Can't%20waste%20siteTime%20and%20money%20/</loc>
     
     <lastmod>2021-04-12</lastmod>
     
@@ -144,13 +144,6 @@
   </url>
   
   <url>
-    <loc>https://www.965.one/tags/Python/</loc>
-    <lastmod>2021-12-27</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.965.one/tags/%E4%BA%BA%E6%80%A7/</loc>
     <lastmod>2021-12-27</lastmod>
     <changefreq>daily</changefreq>
@@ -159,6 +152,13 @@
   
   <url>
     <loc>https://www.965.one/tags/iOS/</loc>
+    <lastmod>2021-12-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.965.one/tags/Python/</loc>
     <lastmod>2021-12-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
