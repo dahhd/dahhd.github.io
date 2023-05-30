@@ -1,0 +1,11 @@
+{
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "SPJ74MPHW7.com.cn.yto.MDBClientenH5Local",
+                "paths": [ "*","/app/*"]
+            }
+        ]
+    }
+}
