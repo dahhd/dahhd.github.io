@@ -472,19 +472,15 @@ div {
   .body_container {
     padding: 0 30px;
   }
-
   .content_container {
     padding-right: 15px;
   }
-
   .hidden_mid_and_down {
     display: none !important;
   }
-
   #sidebar {
     border-left-width: 0px;
   }
-
   #header .site-name {
     margin-bottom: 20px;
     text-align: center;
@@ -505,7 +501,6 @@ div {
   .body_container {
     padding: 0 20px;
   }
-
   .content_container {
     padding-right: 0;
   }
@@ -577,7 +572,6 @@ pre {
     -moz-transform-origin: 50% 0;
     transform-origin: 50% 0;
   }
-
   #rocket:hover {
     background-position: 50% -62px;
   }
@@ -587,12 +581,10 @@ pre {
     -moz-animation: flaming 0.7s infinite;
     animation: flaming 0.7s infinite;
   }
-
   #rocket.show {
     visibility: visible;
     opacity: 1;
   }
-
   #rocket.launch {
     background-position: 50% -62px;
     opacity: 0;
@@ -907,24 +899,20 @@ pre {
   #process .line {
     right: 10px;
   }
-
   #process .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label {
     margin-right: 30px;
     margin-left: 45px;
     padding: 20px;
   }
-
   #process .timeline-centered .timeline-entry {
     margin-right: 20px;
   }
-
   #process .dot_tp,
-#process .dot_bt {
+  #process .dot_bt {
     right: 5px;
   }
-
   #process .present,
-#process .born {
+  #process .born {
     right: 35px;
   }
 }
@@ -1551,11 +1539,9 @@ figure.highlight .line,
     margin: 0em;
     max-width: 100%;
   }
-
   .clear {
     padding: 2.1em 0em 0em 0em;
   }
-
   #toc {
     float: none;
   }
