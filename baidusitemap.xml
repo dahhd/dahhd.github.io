@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.965.one/2017/01/01/Can't%20waste%20siteTime%20and%20money%20/</loc>
-    <lastmod>2025-12-29</lastmod>
-  </url>
-  <url>
-    <loc>https://www.965.one/2017/05/20/KBPhotoSelector/</loc>
-    <lastmod>2025-12-29</lastmod>
-  </url>
-  <url>
-    <loc>https://www.965.one/2021/07/10/WWDC21-ShangHai/</loc>
-    <lastmod>2025-12-29</lastmod>
-  </url>
-  <url>
-    <loc>https://www.965.one/2018/07/08/fastlane%20integrated/</loc>
-    <lastmod>2025-12-29</lastmod>
-  </url>
-  <url>
     <loc>https://www.965.one/2016/12/05/iOS%20Internet%20Requst%20For%20Example/</loc>
     <lastmod>2025-12-29</lastmod>
   </url>
@@ -29,11 +13,11 @@
     <lastmod>2025-12-29</lastmod>
   </url>
   <url>
-    <loc>https://www.965.one/2017/05/01/17%E5%B9%B45%E6%9C%881%E5%8F%B7%E9%9A%8F%E7%AC%94/</loc>
+    <loc>https://www.965.one/2017/05/02/17%E5%B9%B45%E6%9C%882%E5%8F%B7%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2025-12-29</lastmod>
   </url>
   <url>
-    <loc>https://www.965.one/2017/05/02/17%E5%B9%B45%E6%9C%882%E5%8F%B7%E9%9A%8F%E7%AC%94/</loc>
+    <loc>https://www.965.one/2017/05/01/17%E5%B9%B45%E6%9C%881%E5%8F%B7%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2025-12-29</lastmod>
   </url>
   <url>
@@ -50,6 +34,22 @@
   </url>
   <url>
     <loc>https://www.965.one/2016/12/05/A%20simple%20python%20demo/</loc>
+    <lastmod>2025-12-29</lastmod>
+  </url>
+  <url>
+    <loc>https://www.965.one/2017/01/01/Can't%20waste%20siteTime%20and%20money%20/</loc>
+    <lastmod>2025-12-29</lastmod>
+  </url>
+  <url>
+    <loc>https://www.965.one/2017/05/20/KBPhotoSelector/</loc>
+    <lastmod>2025-12-29</lastmod>
+  </url>
+  <url>
+    <loc>https://www.965.one/2021/07/10/WWDC21-ShangHai/</loc>
+    <lastmod>2025-12-29</lastmod>
+  </url>
+  <url>
+    <loc>https://www.965.one/2018/07/08/fastlane%20integrated/</loc>
     <lastmod>2025-12-29</lastmod>
   </url>
 </urlset> 
