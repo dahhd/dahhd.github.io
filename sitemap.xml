@@ -2,60 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.965.one/2017/05/01/17%E5%B9%B45%E6%9C%881%E5%8F%B7%E9%9A%8F%E7%AC%94/</loc>
-    
-    <lastmod>2025-12-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.965.one/2017/05/02/17%E5%B9%B45%E6%9C%882%E5%8F%B7%E9%9A%8F%E7%AC%94/</loc>
-    
-    <lastmod>2025-12-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.965.one/2020/12/31/2020%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</loc>
-    
-    <lastmod>2025-12-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.965.one/2021/12/30/2021year-end-summary/</loc>
-    
-    <lastmod>2025-12-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.965.one/2021/04/12/2021%E4%B8%BD%E6%B1%9F5%E6%97%A5%E6%B8%B8/</loc>
-    
-    <lastmod>2025-12-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.965.one/2016/12/05/A%20simple%20python%20demo/</loc>
-    
-    <lastmod>2025-12-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.965.one/2017/01/01/Can't%20waste%20siteTime%20and%20money%20/</loc>
     
     <lastmod>2025-12-29</lastmod>
@@ -119,15 +65,6 @@
   </url>
   
   <url>
-    <loc>https://www.965.one/404.html</loc>
-    
-    <lastmod>2025-12-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.965.one/about/index.html</loc>
     
     <lastmod>2025-12-29</lastmod>
@@ -147,6 +84,69 @@
   
   <url>
     <loc>https://www.965.one/tags/index.html</loc>
+    
+    <lastmod>2025-12-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.965.one/2017/05/01/17%E5%B9%B45%E6%9C%881%E5%8F%B7%E9%9A%8F%E7%AC%94/</loc>
+    
+    <lastmod>2025-12-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.965.one/2017/05/02/17%E5%B9%B45%E6%9C%882%E5%8F%B7%E9%9A%8F%E7%AC%94/</loc>
+    
+    <lastmod>2025-12-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.965.one/2020/12/31/2020%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</loc>
+    
+    <lastmod>2025-12-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.965.one/2021/12/30/2021year-end-summary/</loc>
+    
+    <lastmod>2025-12-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.965.one/2021/04/12/2021%E4%B8%BD%E6%B1%9F5%E6%97%A5%E6%B8%B8/</loc>
+    
+    <lastmod>2025-12-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.965.one/2016/12/05/A%20simple%20python%20demo/</loc>
+    
+    <lastmod>2025-12-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.965.one/404.html</loc>
     
     <lastmod>2025-12-29</lastmod>
     
